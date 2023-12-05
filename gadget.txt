@@ -1,0 +1,123 @@
+4.15：
+commit_creds(prepare_kernel_cred(NULL))
+
+init_cred
+ffffffff82459d40
+
+commit_creds
+ffffffff810a94a0
+
+prepare_kernel_cred
+ffffffff810a9850
+
+swapgs_restore_regs_and_return_to_usermode
+ffffffff81a00ac4
+
+native_write_cr4
+ffffffff810635b0
+
+work_for_cpu_fn
+ffffffff8109e490
+
+0xffffffff812f7b07 : pop rsp ; ret
+0xffffffff8101dbca : pop rdx ; ret
+0xffffffff8101dbbd : pop rdi ; ret
+0xffffffff8117583f : pop rcx ; ret
+0xffffffff81046cee : pop rsi ; ret
+0xffffffff810f3b07 : pop rax ; ret
+0xffffffff81063674 : swapgs ; pop rbp ; ret
+0xffffffff8103353b: iretq; pop rbp; ret;
+
+x/40gx 0xffffffffc0004440
+
+0xffffffff8133b95f : push rsi ; pop rbp ; ret
+0xffffffff810430f7 : push rsi ; ret
+0xffffffff810783dc : mov rsp, rbp ; pop rbp ; ret
+0xffffffff810783da : pop r12 ; mov rsp, rbp ; pop rbp ; ret
+0xffffffff810783db : pop rsp ; mov rsp, rbp ; pop rbp ; ret
+0xffffffff81a00c29 : mov rsp, rax ; pop rax ; jmp 0xffffffff81a00b77/iretq
+0xffffffff8100dad8 : mov rax, rsi ; jmp 0xffffffff8100dac1/mov    QWORD PTR [rdx+0x38],rax;pop    rbx;pop    rbp;ret
+0xffffffff81236230 : push rdi ; pop rsp ; pop rbp ; add rax, rdx ; ret
+0xffffffff81028b38 : push rsi ; add byte ptr [rbx + 0x41], bl ; pop rsp ; pop r13 ; pop rbp ; ret
+
+
+4.19：
+
+init_cred
+ffffffff8265a980
+
+commit_creds
+ffffffff810b7fb0
+
+prepare_kernel_cred
+ffffffff810b8360
+
+swapgs_restore_regs_and_return_to_usermode
+ffffffff81c00974
+
+native_write_cr4
+ffffffff810697c0
+
+single_start
+ffffffff812cbc90
+
+work_for_cpu_fn
+ffffffff810ac640
+
+ptm_unix98_ops
+ffffffff8208eea0
+pty_unix98_ops
+ffffffff8208ed80
+
+
+
+0xffffffff81039931 : pop rax ; ret
+0xffffffff811cd6f5 : pop rcx ; ret
+0xffffffff8107fc70 : pop rdi ; ret
+0xffffffff810c8442 : pop rsi ; ret
+0xffffffff8112b2ca : pop rdx ; ret
+0xffffffff811cd494 : pop rsp ; ret
+0xffffffff81069864 : swapgs ; pop rbp ; ret
+0xffffffff81036a9b: iretq; pop rbp; ret;
+
+0xffffffff810203a0 : mov cr4, rdi ; pop rbp ; ret
+0xffffffff814c9f46 : push rsi ; add byte ptr [rbx + 0x41], bl ; pop rsp ; pop rbp ; ret
+0xffffffff810f5756 : push rsi ; mov eax, 0x415b0008 ; pop rsp ; pop rbp ; ret
+0xffffffff814388f6 : push rsi ; mov ebp, 0x415bffff ; pop rsp ; pop rbp ; ret
+0xffffffff815bdf03 : pop rdi ; pop rdi ; pop rdi ; pop rbp ; ret
+0xffffffff81774eff : add rsp, 0x148 ; pop rbx ; pop rbp ; ret
+0xffffffff816bda54 : add rsp, 0x198 ; pop rbx ; pop rbp ; ret
+
+5.15：
+
+init_cred
+ffffffff826672a0
+
+commit_creds
+ffffffff810d49b0
+
+prepare_kernel_cred
+ffffffff810d4c60
+
+swapgs_restore_regs_and_return_to_usermode
+ffffffff81c00ff0
+
+single_start
+0xffffffff81350580
+
+ffffffff8126ba80 g     F .text	0000000000000000 alloc_pipe_info
+
+0xffffffff811c30fe : pop rsi ; ret
+0xffffffff81060cf7 : pop rsp ; ret
+0xffffffff8101f007 : pop rcx ; ret
+0xffffffff81044b51 : pop rax ; ret
+0xffffffff81389f32 : pop rdx ; ret
+0xffffffff81060be1 : pop rdi ; ret
+0xffffffff8163d2b3 : add rsp, 0x190 ; pop rbx ; pop rbp ; ret
+
+notebook:
+0xffffffffc0004400
+
+alloc_pipe_info:
+b *(0xffffffff8132dd40)
+p *(struct pipe_inode_info *) xxx

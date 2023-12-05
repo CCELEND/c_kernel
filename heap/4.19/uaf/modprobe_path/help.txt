@@ -1,0 +1,4 @@
+# CONFIG_SLAB_FREELIST_HARDENED is not set
+
+Arbitrary-Address-Allocation：
+覆写 freelist 中的 next 指针的方式完成内核空间中任意地址上的对象分配
